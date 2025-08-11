@@ -249,6 +249,18 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateActiveNav);
     updateActiveNav();
 
+    // If a Google Forms embed URL is provided, show it and hide the custom form
+    if (window.RESERVATION_GOOGLE_FORM_EMBED_URL) {
+        const container = document.getElementById('googleFormContainer');
+        const iframe = container?.querySelector('iframe');
+        const customForm = document.getElementById('reservationForm');
+        if (container && iframe && customForm) {
+            iframe.src = window.RESERVATION_GOOGLE_FORM_EMBED_URL;
+            container.style.display = 'block';
+            customForm.style.display = 'none';
+        }
+    }
+
     // Google Sheets reservation submission + same-day warning
     const reservationForm = document.getElementById('reservationForm');
     if (reservationForm) {
@@ -287,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const res = await fetch(endpoint, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                     body: JSON.stringify(data)
                 });
                 if (res.ok) {

@@ -20,7 +20,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#menu">Menu</a></li>
-                <li><a href="#hours">Hours</a></li>
+                <li><a href="#banquet">Banquets</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="hamburger">
@@ -73,17 +73,56 @@
                 <div class="contact-info">
                     <h2>Reserve a Table</h2>
                     <p class="menu-intro">Please fill out the form and we’ll confirm shortly.</p>
-                    <div class="contact-item">
-                        <i class="far fa-clock"></i>
-                        <div>
-                            <h4>Hours</h4>
-                            <p>Tuesday – Sunday · 4:00 PM – 9:00 PM</p>
+                    <div class="hours-card">
+                        <h3><i class="far fa-clock"></i> Hours</h3>
+                        <div class="hours-list">
+                            <div class="day">
+                                <span>Tuesday - Sunday</span>
+                                <span>4:00 PM - 9:00 PM</span>
+                            </div>
+                            <div class="day closed">
+                                <span>Monday</span>
+                                <span>Closed</span>
+                            </div>
                         </div>
+                    </div>
+                    <!-- Additional info to mirror the reference layout -->
+                    <div class="info-card">
+                        <h4><i class="far fa-calendar-check"></i> Reservation Tips</h4>
+                        <ul class="info-list">
+                            <li>For parties of 8+, please call to ensure seating.</li>
+                            <li>Let us know about allergies or dietary preferences.</li>
+                            <li>Running late? Call us and we’ll hold the table when possible.</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="fas fa-map-marker-alt"></i> Location</h4>
+                        <p>7945 Vineyard Ave D-7, Rancho Cucamonga, CA 91730</p>
+                        <iframe class="mini-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=7945+Vineyard+Ave+D-7,+Rancho+Cucamonga,+CA+91730&output=embed"></iframe>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="fas fa-parking"></i> Parking</h4>
+                        <p>Ample parking available in the center. Accessible spots near the entrance.</p>
+                    </div>
+                    <div class="happy-hour-card">
+                        <h3><i class="fas fa-cocktail"></i> Happy Hour</h3>
+                        <p class="time">4:00 PM - 7:00 PM</p>
+                        <div class="deals">
+                            <p><strong>$3 OFF</strong> all well drinks</p>
+                            <p><strong>$3 OFF</strong> specialty cocktails</p>
+                            <p><strong>$3 OFF</strong> "by the glass" wines</p>
+                            <p><strong>$3 OFF</strong> most appetizers</p>
+                        </div>
+                        <p class="note">Happy Hour isn't just in the bar area anymore!</p>
                     </div>
                 </div>
                 <div class="contact-form">
                     <h3>Request Reservation</h3>
                     <div class="reservation-note"><i class="fas fa-info-circle"></i> Same‑day reservations: If your reservation is for <strong>today</strong>, please call us at <strong>(909) 360‑1498</strong> to confirm availability.</div>
+                    <!-- Replace custom form with embedded Google Form if provided -->
+                    <div id="googleFormContainer" class="form-embed" style="display:none;">
+                        <iframe src="" class="reservation-iframe" loading="lazy" title="Reservation Form"></iframe>
+                    </div>
                     <form id="reservationForm" class="reservation-form">
                         <div class="form-grid">
                             <input name="fullName" type="text" placeholder="Full name" required>
@@ -104,9 +143,10 @@
                         <p id="reservationSuccess" style="display:none;margin-top:12px;color:#2ecc71;font-weight:600;">Thank you! Your request was sent.</p>
                     </form>
                     <div style="margin-top:12px;font-size:0.9rem;color:#7f8c8d;">
-                        Prefer a hosted form? You can also use services like <strong>Tally</strong>, <strong>Google Forms</strong>, or <strong>Typeform</strong> with email notifications. I can wire one in for you.
+                     
                     </div>
                 </div>
+                
             </div>
         </div>
     </section>
@@ -134,33 +174,52 @@
 
 
 
-    <!-- Hours & Happy Hour -->
-    <section id="hours" class="hours-section">
+    <!-- Banquet Section -->
+    <section id="banquet" class="hours-section">
         <div class="container">
+            <h2 style="text-align:center; color: var(--primary-color); margin-bottom: 10px;">Banquets & Private Events</h2>
+            <p class="menu-intro" style="margin-bottom: 30px;">Celebrate life’s moments with a warm Italian dinner. We can tailor menus and details to your occasion.</p>
             <div class="hours-grid">
                 <div class="hours-card">
-                    <h3><i class="far fa-clock"></i> Hours</h3>
+                    <h3><i class="fas fa-users"></i> Banquets & Private Events</h3>
                     <div class="hours-list">
-                        <div class="day">
-                            <span>Tuesday - Sunday</span>
-                            <span>4:00 PM - 9:00 PM</span>
+                        <div class="day" style="display:block; border:0;">
+                            <span>Celebrate birthdays, anniversaries, corporate dinners, and family gatherings in our warm Italian Banquet room.</span>
                         </div>
-                        <div class="day closed">
-                            <span>Monday</span>
-                            <span>Closed</span>
+                        <div class="day" style="display:block; border:0;">
+                            <span>Customizable menus, vegetarian options, desserts, champagne.</span>
+                        </div>
+                        <div class="day" style="display:block; border:0;">
+                            <span>Space for large groups. We’ll help plan the perfect evening.</span>
                         </div>
                     </div>
                 </div>
                 <div class="happy-hour-card">
-                    <h3><i class="fas fa-cocktail"></i> Happy Hour</h3>
-                    <p class="time">4:00 PM - 7:00 PM</p>
+                    <h3><i class="far fa-envelope"></i> Inquiries</h3>
+                    <p class="time">Tell us your date, time, and party size.</p>
                     <div class="deals">
-                        <p><strong>$3 OFF</strong> all well drinks</p>
-                        <p><strong>$3 OFF</strong> specialty cocktails</p>
-                        <p><strong>$3 OFF</strong> "by the glass" wines</p>
-                        <p><strong>$3 OFF</strong> most appetizers</p>
+                        <p>Email: <strong><a href="mailto:reservations@example.com">reservations@example.com</a></strong></p>
+                        <p>Phone: <strong>(909) 360-1498</strong></p>
+                        <p>We’ll confirm availability and menu options.</p>
                     </div>
-                    <p class="note">Happy Hour isn't just in the bar area anymore!</p>
+                    <p class="note">We love hosting—reach out and we’ll take care of the rest.</p>
+                </div>
+                <div class="hours-card">
+                    <h3><i class="fas fa-door-open"></i> Room Rental & Details</h3>
+                    <div class="hours-list">
+                        <div class="day" style="display:block; border:0;">
+                            <span>Room fee for private use depending on date/time and party size.</span>
+                        </div>
+                        <div class="day" style="display:block; border:0;">
+                            <span>Custom prix‑fixe menus or family‑style available.</span>
+                        </div>
+                        <div class="day" style="display:block; border:0;">
+                            <span>Décor welcome (no open flame).</span>
+                        </div>
+                        <div class="day" style="display:block; border:0;">
+                            <span>Audio for toasts/background music allowed.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -756,6 +815,7 @@
 
     <script>
       window.RESERVATION_SHEETS_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbz67UeeofaJ4pxECzeLLzNVobriQH7oXsEhU8RpNN74e0Jd0EcwJmKdHQpA2gGKDMWK/exec';
+      window.RESERVATION_GOOGLE_FORM_EMBED_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdQ1dZeGyhNgAaCvjpj3hjdyixlgw3FPDtKMhe93rvOyfvvLg/viewform?embedded=true';
     </script>
     <script src="script.js"></script>
 </body>
