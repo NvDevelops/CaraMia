@@ -166,16 +166,22 @@ const revealOnScroll = () => {
 
 // Initialize reveal animations
 document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('section:not(.hero)');
+    // Check if we're on the full menu page
+    const isFullMenuPage = document.querySelector('.full-menu');
     
-    sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(50px)';
-        section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-    });
-    
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Initial check
+    // Only initialize reveal animations if NOT on the full menu page
+    if (!isFullMenuPage) {
+        const sections = document.querySelectorAll('section:not(.hero)');
+        
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(50px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        });
+        
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+    }
 });
 
 // Add loading state for form submission
@@ -204,8 +210,6 @@ if (newsletterForm) {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize menu category functionality
-    initMenuCategories();
     
     // Initialize mobile navigation
     initMobileNav();
@@ -213,8 +217,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize smooth scrolling
     initSmoothScrolling();
     
-    // Initialize scroll animations
-    initScrollAnimations();
+    // Check if we're on the full menu page before initializing scroll animations
+    const isFullMenuPage = document.querySelector('.full-menu');
+    
+    // Only initialize scroll animations if NOT on the full menu page
+    if (!isFullMenuPage) {
+        initScrollAnimations();
+    }
+    
+    // Initialize menu animations if on menu page
+    initMenuAnimations();
+    
+    // Initialize menu button functionality
+    initMenuButton();
 
     // Back-to-top button behavior
     const backToTopBtn = document.querySelector('.back-to-top');
@@ -320,35 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Menu Category Functionality
-function initMenuCategories() {
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    const menuCategories = document.querySelectorAll('.menu-category');
-    
-    console.log('Found category buttons:', categoryButtons.length);
-    console.log('Found menu categories:', menuCategories.length);
-    
-    categoryButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetCategory = button.getAttribute('data-category');
-            console.log('Clicked category:', targetCategory);
-            
-            // Remove active class from all buttons and categories
-            categoryButtons.forEach(btn => btn.classList.remove('active'));
-            menuCategories.forEach(category => category.classList.remove('active'));
-            
-            // Add active class to clicked button and corresponding category
-            button.classList.add('active');
-            const targetElement = document.getElementById(targetCategory);
-            if (targetElement) {
-                targetElement.classList.add('active');
-                console.log('Activated category:', targetCategory);
-            } else {
-                console.error('Category element not found:', targetCategory);
-            }
-        });
-    });
-}
+
 
 // Mobile Navigation Functions
 function initMobileNav() {
@@ -397,6 +384,12 @@ function initSmoothScrolling() {
 
 // Scroll Animations Function
 function initScrollAnimations() {
+    // If we're on the full menu page, skip global scroll animations to avoid conflicts
+    if (document.querySelector('.full-menu')) {
+        console.log('Full menu page detected, skipping scroll animations');
+        return;
+    }
+
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -411,7 +404,8 @@ function initScrollAnimations() {
         });
     }, observerOptions);
 
-    const animateElements = document.querySelectorAll('.about-content, .hours-card, .happy-hour-card, .menu-category, .gallery-item, .contact-item');
+    // Exclude menu-related elements from scroll animations
+    const animateElements = document.querySelectorAll('.about-content, .hours-card, .happy-hour-card, .gallery-item, .contact-item');
     
     animateElements.forEach(el => {
         el.style.opacity = '0';
@@ -420,10 +414,101 @@ function initScrollAnimations() {
         observer.observe(el);
     });
 
-    // Stagger animation delays for menu categories
-    const menuCategories = document.querySelectorAll('.menu-category');
-    menuCategories.forEach((category, index) => {
-        category.style.animationDelay = `${index * 0.1}s`;
+    // Remove any existing menu category animations since we're not using them anymore
+    console.log('Scroll animations initialized for non-menu elements');
+}
+
+// Test function for debugging animations
+function testAnimation() {
+    console.log('Test animation function called');
+    
+    const menuHeader = document.querySelector('.menu-header');
+    const menuSections = document.querySelectorAll('.menu-section');
+    
+    console.log('Found header:', menuHeader);
+    console.log('Found sections:', menuSections.length);
+    
+    if (menuHeader) {
+        menuHeader.classList.add('animate-in');
+        console.log('Added animate-in to header');
+    }
+    
+    menuSections.forEach((section, index) => {
+        setTimeout(() => {
+            section.classList.add('animate-in');
+            console.log(`Added animate-in to section ${index + 1}`);
+        }, index * 100);
     });
+}
+
+// Initialize menu animations
+function initMenuAnimations() {
+    // Check if we're on the full menu page
+    const fullMenu = document.querySelector('.full-menu');
+    if (!fullMenu) {
+        console.log('Not on full menu page, skipping menu animations');
+        return;
+    }
+
+    console.log('Initializing menu animations on full menu page');
+
+    // Small delay to ensure all other animations are disabled
+    setTimeout(() => {
+        // Get all menu elements
+        const menuHeader = document.querySelector('.menu-header');
+        const menuSections = document.querySelectorAll('.menu-section');
+
+        console.log('Found menu header:', !!menuHeader);
+        console.log('Found menu sections:', menuSections.length);
+
+        // Force all elements to be visible with !important equivalent
+        if (menuHeader) {
+            menuHeader.style.setProperty('opacity', '1', 'important');
+            menuHeader.style.setProperty('transform', 'translateY(0)', 'important');
+            menuHeader.style.setProperty('visibility', 'visible', 'important');
+            menuHeader.classList.add('animate-in');
+            console.log('Menu header made visible');
+        }
+        
+        menuSections.forEach((section, index) => {
+            section.style.setProperty('opacity', '1', 'important');
+            section.style.setProperty('transform', 'translateY(0)', 'important');
+            section.style.setProperty('visibility', 'visible', 'important');
+            section.classList.add('animate-in');
+            console.log(`Menu section ${index + 1} made visible`);
+        });
+
+        // Force a reflow to ensure styles are applied
+        fullMenu.offsetHeight;
+
+        // Scroll to top to ensure everything is visible
+        window.scrollTo({
+            top: 0,
+            behavior: 'instant'
+        });
+
+        console.log('All menu elements are now visible');
+    }, 100); // Small delay to ensure everything is ready
+}
+
+// Initialize menu button functionality
+function initMenuButton() {
+    const menuButton = document.querySelector('.btn-menu-golden');
+    
+    if (menuButton) {
+        console.log('Menu button found, adding click handler');
+        // The button is already a link to menu.html, so no additional functionality needed
+        // Just add some visual feedback
+        menuButton.addEventListener('click', (e) => {
+            console.log('Menu button clicked');
+            // Add a small visual effect
+            menuButton.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                menuButton.style.transform = '';
+            }, 150);
+        });
+    } else {
+        console.log('Menu button not found');
+    }
 }
 

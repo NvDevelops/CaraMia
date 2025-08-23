@@ -66,13 +66,13 @@
         </div>
     </section>
 
-    <!-- Reservation Section (Google Sheets) -->
+    <!-- Information Section -->
     <section id="reservation" class="contact">
         <div class="container">
             <div class="contact-content">
                 <div class="contact-info">
-                    <h2>Reserve a Table</h2>
-                    <p class="menu-intro">Please fill out the form and we’ll confirm shortly.</p>
+                    <h2>Information</h2>
+                    <div class="info-grid">
                     <div class="hours-card">
                         <h3><i class="far fa-clock"></i> Hours</h3>
                         <div class="hours-list">
@@ -115,35 +115,24 @@
                         </div>
                         <p class="note">Happy Hour isn't just in the bar area anymore!</p>
                     </div>
-                </div>
-                <div class="contact-form">
-                    <h3>Request Reservation</h3>
-                    <div class="reservation-note"><i class="fas fa-info-circle"></i> Same‑day reservations: If your reservation is for <strong>today</strong>, please call us at <strong>(909) 360‑1498</strong> to confirm availability.</div>
-                    <!-- Replace custom form with embedded Google Form if provided -->
-                    <div id="googleFormContainer" class="form-embed" style="display:none;">
-                        <iframe src="" class="reservation-iframe" loading="lazy" title="Reservation Form"></iframe>
-                    </div>
-                    <form id="reservationForm" class="reservation-form">
-                        <div class="form-grid">
-                            <input name="fullName" type="text" placeholder="Full name" required>
-                            <input name="phone" type="tel" placeholder="Phone" required>
-                            <input name="email" type="email" placeholder="Email (optional)">
-                            <select name="partySize" required>
-                                <option value="" disabled selected>Party size</option>
-                                <option>1</option><option>2</option><option>3</option><option>4</option>
-                                <option>5</option><option>6</option><option>7</option><option>8</option>
-                                <option>9</option><option>10</option><option>11</option><option>12</option>
-                            </select>
-                            <input name="date" id="reservationDate" type="date" required>
-                            <input name="time" type="time" required>
+                    <div class="live-music-card">
+                        <h3><i class="fas fa-music"></i> Live Music</h3>
+                        <div class="hours-list">
+                            <div class="day">
+                                <span>Friday – Sunday</span>
+                                <span>6:30 PM – 9:00 PM</span>
+                            </div>
                         </div>
-                        <p id="todayWarning" class="today-warning"><i class="fas fa-phone"></i> It looks like this is for today — please call <strong>(909) 360‑1498</strong> to confirm.</p>
-                        <textarea name="notes" rows="3" placeholder="Notes (allergies, occasion, seating)"></textarea>
-                        <button type="submit" class="btn btn-primary">Submit Request</button>
-                        <p id="reservationSuccess" style="display:none;margin-top:12px;color:#2ecc71;font-weight:600;">Thank you! Your request was sent.</p>
-                    </form>
-                    <div style="margin-top:12px;font-size:0.9rem;color:#7f8c8d;">
-                     
+                        <p class="note">Enjoy intimate performances from local artists while you dine.</p>
+                        <div class="music-notes" aria-hidden="true">
+                            <span>♪</span>
+                            <span>♫</span>
+                            <span>♬</span>
+                            <span>♪</span>
+                            <span>♫</span>
+                            <span>♩</span>
+                        </div>
+                    </div>
                     </div>
                 </div>
                 
@@ -219,502 +208,29 @@
                         <div class="day" style="display:block; border:0;">
                             <span>Audio for toasts/background music allowed.</span>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                                         </div>
+                 </div>
+             </div>
+             <div class="banquet-button-container">
+                 <a href="banquets.html" class="btn btn-menu-golden">
+                     <i class="fas fa-images"></i>
+                     View Banquet Gallery
+                 </a>
+             </div>
+         </div>
+     </section>
 
     <!-- Dinner Menu -->
     <section id="menu" class="menu-preview">
         <div class="container">
-            <!-- Menu Category Buttons -->
-            <div class="menu-category-buttons">
-                <button class="category-btn active" data-category="appetizers">Appetizers</button>
-                <button class="category-btn" data-category="soup">Soup</button>
-                <button class="category-btn" data-category="salads">Salads</button>
-                <button class="category-btn" data-category="house-specials">House Specials</button>
-                <button class="category-btn" data-category="chicken">Chicken</button>
-                <button class="category-btn" data-category="fish">Fish</button>
-                <button class="category-btn" data-category="beef">Beef</button>
-                <button class="category-btn" data-category="pasta">Pasta</button>
-                <button class="category-btn" data-category="pizza">Pizza</button>
-            </div>
-            
             <h2>Dinner Menu</h2>
             <p class="menu-intro">Discover the authentic flavors of Italy, crafted with love and tradition</p>
-            <div class="diet-legend" aria-label="Menu legend">
-                <span class="diet-badge vg"><i class="fas fa-seedling" aria-hidden="true"></i> VG = Vegetarian</span>
-                <span class="diet-badge pork"><i class="fas fa-bacon" aria-hidden="true"></i> P = Pork</span>
-                <span class="diet-badge gf"><i class="fas fa-check" aria-hidden="true"></i> GF = Gluten‑Free</span>
-            </div>
             
-            <!-- Menu Content - Only one category shows at a time -->
-            <div class="menu-content">
-                <!-- Appetizers Category -->
-                <div id="appetizers" class="menu-category active">
-                    <h3>Appetizers</h3>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Bruschetta</h4>
-                                <span class="price">$11</span>
-                            </div>
-                            <p class="description">marinated fresh tomatoes with extra virgin olive oil, garlic, oregano, and fresh basil</p>
-                            <div class="diet-tags"><span class="diet-chip vg"><i class="fas fa-seedling" aria-hidden="true"></i> VG</span></div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Shrimp Liveronese</h4>
-                                <span class="price">$16</span>
-                            </div>
-                            <p class="description">shrimp sauteed in olive oil, garlic, white wine, and light marinara sauce</p>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Crab Cake</h4>
-                                <span class="price">$10</span>
-                            </div>
-                            <p class="description">with gorgonzola cream sauce</p>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Mozzarella Caprese</h4>
-                                <span class="price">$15</span>
-                            </div>
-                            <p class="description">fresh mozzarella vine-ripped tomatoes, extra virgin olive oil, and balsamic vinegar reduction</p>
-                            <div class="diet-tags"><span class="diet-chip vg"><i class="fas fa-seedling" aria-hidden="true"></i> VG</span></div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Fried Calamari</h4>
-                                <span class="price">$17</span>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Burrata and Arugula</h4>
-                                <span class="price">$17</span>
-                            </div>
-                            <p class="description">burrata mozzarella cheese, arugula salad, cherry tomatoes with extra virgin olive oil, sea salt, and balsamic vinegar reduction</p>
-                            <div class="diet-tags"><span class="diet-chip vg"><i class="fas fa-seedling" aria-hidden="true"></i> VG</span></div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Burrata Bruschetta</h4>
-                                <span class="price">$19</span>
-                            </div>
-                            <p class="description">Crostini with burrata mozzarella cheese, marinated fresh tomatoes with extra virgin oil, garlic & oregano, drizzled with balsamic glaze</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Soup Category -->
-                <div id="soup" class="menu-category">
-                    <h3>Soup</h3>
-                    <p class="category-description">Fresh made soup to soothe the soul.</p>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Lobster Bisque</h4>
-                                <span class="price">$13</span>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Minestrone</h4>
-                                <span class="price">$9</span>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Lentil Soup</h4>
-                                <span class="price">$9</span>
-                            </div>
-                            <p class="description">with Italian sausage</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Salads Category -->
-                <div id="salads" class="menu-category">
-                    <h3>Salads</h3>
-                    <p class="category-description">Our crisp salads are made with fresh ingredients and are generously covered with flavorful toppings with different salad dressings to choose from.</p>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Shrimp Salad</h4>
-                                <span class="price">$17</span>
-                            </div>
-                            <p class="description">shrimp and mushrooms sauteed in olive oil and garlic over a bed of baby mix greens with raspberry vinaigrette</p>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Cara Mia Wedge</h4>
-                                <span class="price">$15</span>
-                            </div>
-                            <p class="description">baby lettuce wedge with crispy bacon, red onion, blue cheese crumbles, cucumber, and cherry tomatoes with blue cheese dressing</p>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Cara Mia Salad</h4>
-                                <span class="price">$16</span>
-                            </div>
-                            <p class="description">spinach or baby mix green with candied walnuts, grapes, hard boiled eggs, feta cheese, crispy bacon, and poached pears in a raspberry vinaigrette</p>
-                            <div class="diet-tags"><span class="diet-chip pork"><i class="fas fa-bacon" aria-hidden="true"></i> P</span></div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Caesar Salad</h4>
-                                <span class="price">$10</span>
-                            </div>
-                            <div class="add-ons">
-                                <div class="add-on">
-                                    <span>Chicken</span>
-                                    <span class="price">+$8</span>
-                                </div>
-                                <div class="add-on">
-                                    <span>Salmon</span>
-                                    <span class="price">+$10</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Green Salad</h4>
-                                <span class="price">$8</span>
-                            </div>
-                            <p class="description">lettuce, baby mix greens with tomatoes, cucumber, black olives, artichokes with your choice of Italian, blue cheese or ranch dressing</p>
-                            <div class="diet-tags"><span class="diet-chip vg"><i class="fas fa-seedling" aria-hidden="true"></i> VG</span></div>
-                        </div>
-                        
-                        <div class="menu-item special">
-                            <div class="item-header">
-                                <h4>Special: Green Salad & Soup</h4>
-                                <span class="price">$15</span>
-                            </div>
-                            <p class="description">Soup options: Minestrone or Lentil Soup</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- House Specials Category -->
-                <div id="house-specials" class="menu-category">
-                    <h3>House Specials</h3>
-                    <p class="category-description">Our favorite dinner specials curated for you</p>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Eggplant Parmigiana</h4>
-                                <span class="price">$20</span>
-                            </div>
-                            <p class="description">lightly breaded eggplant baked with ricotta cheese, mozzarella cheese, and light marinara sauce</p>
-                            <div class="diet-tags"><span class="diet-chip vg"><i class="fas fa-seedling" aria-hidden="true"></i> VG</span></div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Chicken Piccata</h4>
-                                <span class="price">$25</span>
-                            </div>
-                            <p class="description">boneless chicken breast with capers in a butter lemon sauce</p>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Meat Lasagna</h4>
-                                <span class="price">$19</span>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Cioppino</h4>
-                                <span class="price">$34</span>
-                            </div>
-                            <p class="description">mixed fish, clams, mussels, calamari, and shrimp sauteed in light tomato broth with a side linguine</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Chicken Category -->
-                <div id="chicken" class="menu-category">
-                    <h3>Chicken</h3>
-                    <p class="category-description">served with a side of veggies</p>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Chicken Riccho</h4>
-                                <span class="price">$25</span>
-                            </div>
-                            <p class="description">boneless chicken breast sauteed in olive oil, garlic, white wine, and light marinara sauce baked with prosciutto and mozzarella cheese</p>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Chicken Cara Mia</h4>
-                                <span class="price">$25</span>
-                            </div>
-                            <p class="description">boneless chicken breast with mushrooms in truffle infused gorgonzola sauce</p>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Chicken Vaneziano</h4>
-                                <span class="price">$25</span>
-                            </div>
-                            <p class="description">boneless chicken breast sauteed with fresh spinach and tomatoes in a cream sauce</p>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Chicken Parmigiana</h4>
-                                <span class="price">$25</span>
-                            </div>
-                            <p class="description">lightly breaded deep-fried boneless chicken breast baked with mozzarella cheese and marinara sauce</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Fish Category -->
-                <div id="fish" class="menu-category">
-                    <h3>Fish</h3>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Scampi</h4>
-                                <span class="price">$33</span>
-                            </div>
-                            <p class="description">your choice of green peppercorn brandy cream sauce, herb sauce, diavolo sauce, or piccata</p>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Grilled Salmon</h4>
-                                <span class="price">$32</span>
-                            </div>
-                            <p class="description">with roasted cherry tomatoes in a fresh herb garlic sauce</p>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Sole Picatta</h4>
-                                <span class="price">$30</span>
-                            </div>
-                            <p class="description">Sole fish with butter, garlic, lemon, and capers</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Beef Category -->
-                <div id="beef" class="menu-category">
-                    <h3>Beef</h3>
-                    <p class="category-description">your choice of green peppercorn brandy cream mushrooms demi-glaze cream, or gorgonzola sauce and served with a side of veggies</p>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>10 oz Filet Mignon</h4>
-                                <span class="price">$43</span>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>12 oz Ribeye</h4>
-                                <span class="price">$43</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Pasta Category -->
-                <div id="pasta" class="menu-category">
-                    <h3>Pasta</h3>
-                    <p class="category-description">To any dish add Chicken +$8 | Salmon +$10 | Shrimp +$8</p>
-                    <p class="category-description"><i class="fas fa-circle-check" aria-hidden="true"></i> Gluten‑free pasta substitutes are available for many dishes; an additional charge applies.</p>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Spaghetti Fresco</h4>
-                                <span class="price">$18</span>
-                            </div>
-                            <p class="description">sauteed in olive oil and garlic with fresh tomatoes and spinach</p>
-                            <div class="diet-tags"><span class="diet-chip vg"><i class="fas fa-seedling" aria-hidden="true"></i> VG</span></div>
-                            <div class="add-ons">
-                                <div class="add-on">
-                                    <span>Chicken</span>
-                                    <span class="price">+$8</span>
-                                </div>
-                                <div class="add-on">
-                                    <span>Shrimp</span>
-                                    <span class="price">+$8</span>
-                                </div>
-                                <div class="add-on">
-                                    <span>Salmon</span>
-                                    <span class="price">+$10</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Spaghetti</h4>
-                                <span class="price">$17</span>
-                            </div>
-                            <p class="description">your choice of marinara or meat sauce</p>
-                            <div class="diet-tags"><span class="diet-chip vg"><i class="fas fa-seedling" aria-hidden="true"></i> VG</span></div>
-                            <div class="add-ons">
-                                <div class="add-on">
-                                    <span>Meatballs</span>
-                                    <span class="price">+$5</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Fettuccine Alfredo</h4>
-                                <span class="price">$17</span>
-                            </div>
-                            <div class="add-ons">
-                                <div class="add-on">
-                                    <span>Chicken</span>
-                                    <span class="price">+$8</span>
-                                </div>
-                                <div class="add-on">
-                                    <span>Shrimp</span>
-                                    <span class="price">+$8</span>
-                                </div>
-                                <div class="add-on">
-                                    <span>Salmon</span>
-                                    <span class="price">+$10</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Baked Ravioli</h4>
-                                <span class="price">$19</span>
-                            </div>
-                            <p class="description">in aurora sauce and mozzarella cheese</p>
-                            <div class="diet-tags"><span class="diet-chip vg"><i class="fas fa-seedling" aria-hidden="true"></i> VG</span></div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Cara Mia Angel Hair</h4>
-                                <span class="price">$23</span>
-                            </div>
-                            <p class="description">sauteed in olive oil and garlic with oven-roasted cherry tomatoes, artichokes heart, and burrata cheese</p>
-                            <div class="diet-tags"><span class="diet-chip vg"><i class="fas fa-seedling" aria-hidden="true"></i> VG</span></div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Fettuccine Primavera</h4>
-                                <span class="price">$18</span>
-                            </div>
-                            <p class="description">sauteed in olive oil and garlic with mixed vegetables in marinara or alfredo sauce</p>
-                            <div class="diet-tags"><span class="diet-chip vg"><i class="fas fa-seedling" aria-hidden="true"></i> VG</span></div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Tortellini Genovese</h4>
-                                <span class="price">$21</span>
-                            </div>
-                            <p class="description">cheese tortellini with pesto cream sauce</p>
-                            <div class="diet-tags"><span class="diet-chip vg"><i class="fas fa-seedling" aria-hidden="true"></i> VG</span></div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Salmon Linguine</h4>
-                                <span class="price">$25</span>
-                            </div>
-                            <p class="description">sauteed with butter, garlic, and green onion, with salmon and tossed in a mascarpone cream sauce</p>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Shrimp Parmigiana</h4>
-                                <span class="price">$25</span>
-                            </div>
-                            <p class="description">shrimp sauteed in olive oil, garlic, white wine and light marinara sauce, baked with mozzarella then served linguine</p>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Butternut Squash Ravioli</h4>
-                                <span class="price">$19</span>
-                            </div>
-                            <p class="description">in a pernod pink cream sauce</p>
-                            <div class="diet-tags"><span class="diet-chip vg"><i class="fas fa-seedling" aria-hidden="true"></i> VG</span></div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Penne Vodka</h4>
-                                <span class="price">$20</span>
-                            </div>
-                            <p class="description">penne pasta sauteed in butter and garlic with bacon in vodka pink cream sauce</p>
-                            <div class="diet-tags"><span class="diet-chip pork"><i class="fas fa-bacon" aria-hidden="true"></i> P</span></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Pizza Category -->
-                <div id="pizza" class="menu-category">
-                    <h3>Pizza</h3>
-                    <p class="category-description">Our pizzas are made fresh with a combination of many high quality ingredients carefully baked to delicious perfection.</p>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Pizza Burrata</h4>
-                                <span class="price">$19</span>
-                            </div>
-                            <p class="description">burrata cheese, prosciutto, and arugula</p>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Margherita</h4>
-                                <span class="price">$18</span>
-                            </div>
-                            <p class="description">mozzarella cheese, Roma tomato slices and fresh basil</p>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Pizza Genovese</h4>
-                                <span class="price">$18</span>
-                            </div>
-                            <p class="description">mozzarella cheese, pesto, pine nuts, cherry tomatoes, and artichokes</p>
-                            <div class="diet-tags"><span class="diet-chip vg"><i class="fas fa-seedling" aria-hidden="true"></i> VG</span></div>
-                        </div>
-                        
-                        <div class="menu-item">
-                            <div class="item-header">
-                                <h4>Pizza Cara Mia</h4>
-                                <span class="price">$19</span>
-                            </div>
-                            <p class="description">mozzarella cheese, truffle infused gorgonzola, chicken, mushrooms, and fresh basil</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="menu-button-container">
+                <a href="menu.html" class="btn btn-menu-golden">
+                    <i class="fas fa-utensils"></i>
+                    Open Full Menu
+                </a>
             </div>
         </div>
     </section>
