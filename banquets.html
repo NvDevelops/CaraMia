@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
 </head>
 <body class="full-menu">
     <!-- Navigation -->
@@ -126,31 +125,29 @@
             const photoGrid = document.getElementById('banquet-photo-grid');
             const videoGrid = document.getElementById('banquet-video-grid');
 
-            // Curate images (root + banquet folder). HEIC may not render in some browsers but included per request.
+            // Use images from the Images/ folder (PNG format for better browser compatibility)
             const imageFiles = [
-                'drive-download-20251009T154541Z-1-001/08235073-FEB3-4121-91C7-7C19D661831E.HEIC',
-                'drive-download-20251009T154541Z-1-001/FullSizeRender.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_1199.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_1200.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_1471.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_1548.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_2337.PNG',
-                'drive-download-20251009T154541Z-1-001/IMG_2671.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_2728.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_2730.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_2733.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_2734.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_3636.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_4115.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_4320.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_4321.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_4322.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_4324.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_4408.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_5318.HEIC',
-                'drive-download-20251009T154541Z-1-001/IMG_6946.HEIC',
-                'drive-download-20251009T154541Z-1-001/Resized_Resized_20240526_172951.JPEG',
-                'drive-download-20251009T154541Z-1-001/Resized_Resized_20240526_172959.JPEG'
+                'Images/08235073-FEB3-4121-91C7-7C19D661831E.png',
+                'Images/FullSizeRender.png',
+                'Images/IMG_1199.png',
+                'Images/IMG_1200.png',
+                'Images/IMG_1471.png',
+                'Images/IMG_1548.png',
+                'Images/IMG_2671.png',
+                'Images/IMG_2728.png',
+                'Images/IMG_2730.png',
+                'Images/IMG_2733.png',
+                'Images/IMG_2734.png',
+                'Images/IMG_3636.png',
+                'Images/IMG_4115.png',
+                'Images/IMG_4320.png',
+                'Images/IMG_4321.png',
+                'Images/IMG_4322.png',
+                'Images/IMG_4324.png',
+                'Images/IMG_4408.png',
+                'Images/IMG_4435.png',
+                'Images/IMG_5318.png',
+                'Images/IMG_6946.png'
             ];
 
             const videoFiles = [
@@ -190,84 +187,25 @@
                 'drive-download-20251009T154541Z-1-001/video_1_f279fe9859e3497684805bbd37b1fd2b.MOV'
             ];
 
-            async function resolveHeicToFastPath(src) {
-                // Given any HEIC path under the drive-download folder, prefer photos/BASE.webp then photos/BASE.jpg
-                const filename = src.replace(/^.*\//, '');
-                const top = src.split('/')[0]; // drive-download-...
-                const base = filename.replace(/\.[^.]+$/i, '');
-                const webp = `${top}/photos/${base}.webp`;
-                const jpg = `${top}/photos/${base}.jpg`;
-                try {
-                    const r1 = await fetch(webp, { method: 'HEAD' });
-                    if (r1.ok) return webp;
-                } catch (e) {}
-                try {
-                    const r2 = await fetch(jpg, { method: 'HEAD' });
-                    if (r2.ok) return jpg;
-                } catch (e) {}
-                return null;
-            }
-
-            // Render images preferring fast formats; fall back to HEIC conversion only if needed
+            // Render images from Images/ folder (PNG format)
             if (photoGrid) {
-                imageFiles.forEach(async (src) => {
+                imageFiles.forEach((src) => {
                     const fig = document.createElement('figure');
                     fig.className = 'gallery-item';
                     const cap = document.createElement('figcaption');
                     cap.textContent = '';
 
-                    const isHeic = src.toLowerCase().endsWith('.heic');
-
-                    if (isHeic) {
-                        // If user separates folders, support drive-download/.../heic and .../photos
-                        const filename = src.replace(/^.*\//, '');
-                        const top = src.split('/')[0];
-                        const heicSrc = src.includes('/heic/') ? src : `${top}/heic/${filename}`;
-                        const fast = await resolveHeicToFastPath(heicSrc);
-                        if (fast) {
-                            const img = document.createElement('img');
-                            img.className = 'gallery-img';
-                            img.alt = 'Banquet photo';
-                            img.loading = 'lazy';
-                            img.decoding = 'async';
-                            img.src = fast;
-                            fig.appendChild(img);
-                        } else {
-                            const img = document.createElement('img');
-                            img.className = 'gallery-img';
-                            img.alt = 'Banquet photo';
-                            img.loading = 'lazy';
-                            img.decoding = 'async';
-                            if (window.heic2any) {
-                                try {
-                                    const blob = await fetch(heicSrc).then(r => r.blob());
-                                    const converted = await window.heic2any({ blob, toType: 'image/jpeg', quality: 0.9 });
-                                    const outBlob = Array.isArray(converted) ? converted[0] : converted;
-                                    img.src = URL.createObjectURL(outBlob);
-                                } catch (e) {
-                                    fig.classList.add('media-error');
-                                    cap.textContent = 'Preview not supported on this device';
-                                }
-                            } else {
-                                fig.classList.add('media-error');
-                                cap.textContent = 'Preview not supported on this device';
-                            }
-                            fig.appendChild(img);
-                        }
-                    } else {
-                        const img = document.createElement('img');
-                        img.className = 'gallery-img';
-                        img.alt = 'Banquet photo';
-                        img.loading = 'lazy';
-                        img.decoding = 'async';
-                        img.src = src;
-                        img.addEventListener('error', () => {
-                            fig.classList.add('media-error');
-                            cap.textContent = 'Preview not supported on this device';
-                        });
-                        fig.appendChild(img);
-                    }
-
+                    const img = document.createElement('img');
+                    img.className = 'gallery-img';
+                    img.alt = 'Banquet photo';
+                    img.loading = 'lazy';
+                    img.decoding = 'async';
+                    img.src = src;
+                    img.addEventListener('error', () => {
+                        fig.classList.add('media-error');
+                        cap.textContent = 'Image could not be loaded';
+                    });
+                    fig.appendChild(img);
                     fig.appendChild(cap);
                     photoGrid.appendChild(fig);
                 });
