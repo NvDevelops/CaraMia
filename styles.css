@@ -1,5 +1,6 @@
 /* Enhanced Responsive Design */
 :root {
+    /* Original Colors - Preserved */
     --primary-color: #c0392b;
     --secondary-color: #e74c3c;
     --accent-color: #dc143c;
@@ -15,6 +16,15 @@
     --gradient-light: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
     --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
     --hero-image: url('IMG_0016_edited.avif');
+    
+    /* Fall Theme Colors */
+    --fall-orange: #ff8c00;
+    --fall-brown: #8b4513;
+    --fall-red: #cd5c5c;
+    --fall-yellow: #daa520;
+    --fall-gold: #b8860b;
+    --fall-gradient: linear-gradient(135deg, #ff8c00 0%, #cd5c5c 50%, #8b4513 100%);
+    --fall-accent: linear-gradient(135deg, #daa520 0%, #ff8c00 100%);
     
     /* Fluid typography - refined for better scaling */
     --font-size-base: clamp(0.95rem, 2vw, 1.125rem);
@@ -298,7 +308,6 @@ section::before {
 /* Modern Design Improvements */
 .hero {
     height: 100vh;
-    min-height: 500px;
     background:
         linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.25)),
         var(--hero-image);
@@ -307,7 +316,7 @@ section::before {
     background-attachment: scroll;
     color: var(--white);
     text-align: center;
-    padding: clamp(100px, 15vw, 120px) 0 clamp(60px, 10vw, 80px);
+    padding: 120px 0 80px;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -1068,6 +1077,8 @@ section::before {
     position: relative;
     background: linear-gradient(#ffffff, #ffffff) padding-box,
                 linear-gradient(135deg, rgba(220, 20, 60, 0.25), rgba(192, 57, 43, 0.25)) border-box;
+    padding: 0;
+    margin: 0;
 }
 
 .gallery-item::before {
@@ -1097,8 +1108,11 @@ section::before {
     width: 100%;
     height: 300px;
     object-fit: cover;
+    object-position: center;
     border-radius: 20px;
     transition: transform 0.4s ease;
+    background: #f8f8f8;
+    display: block;
 }
 
 .gallery-item:hover .gallery-img {
@@ -1948,6 +1962,292 @@ footer .tribute {
         color: #000 !important;
         background: #fff !important;
     }
+}
+
+/* Fall Theme Styles */
+.fall-theme {
+    /* Override primary colors with fall colors */
+    --primary-color: var(--fall-orange);
+    --secondary-color: var(--fall-red);
+    --accent-color: var(--fall-brown);
+    --gold-color: var(--fall-yellow);
+    --gradient-primary: var(--fall-gradient);
+    --gradient-secondary: linear-gradient(135deg, var(--fall-brown) 0%, var(--fall-orange) 100%);
+    --gradient-gold: var(--fall-accent);
+}
+
+/* Fall-themed elements */
+.fall-theme .hero {
+    background: 
+        linear-gradient(0deg, rgba(139, 69, 19, 0.6), rgba(255, 140, 0, 0.3)),
+        var(--hero-image);
+}
+
+.fall-theme .navbar {
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 2px solid var(--fall-orange);
+}
+
+.fall-theme .nav-menu a:hover {
+    color: var(--fall-orange);
+}
+
+.fall-theme .nav-menu a::after {
+    background: var(--fall-orange);
+}
+
+.fall-theme .btn-primary {
+    background: var(--fall-gradient);
+    border-color: var(--fall-orange);
+    box-shadow: 0 8px 25px rgba(255, 140, 0, 0.3);
+}
+
+.fall-theme .btn-primary:hover {
+    background: linear-gradient(135deg, var(--fall-red) 0%, var(--fall-orange) 50%, var(--fall-brown) 100%);
+    box-shadow: 0 12px 35px rgba(255, 140, 0, 0.4);
+}
+
+.fall-theme .btn-menu-golden {
+    background: var(--fall-accent);
+    box-shadow: 
+        0 10px 30px rgba(218, 165, 32, 0.4),
+        0 0 20px rgba(255, 140, 0, 0.2);
+}
+
+.fall-theme .btn-menu-golden:hover {
+    background: linear-gradient(135deg, var(--fall-orange) 0%, var(--fall-yellow) 100%);
+    box-shadow: 
+        0 15px 40px rgba(218, 165, 32, 0.6),
+        0 0 30px rgba(255, 140, 0, 0.4);
+}
+
+.fall-theme .gallery-item {
+    border: 2px solid transparent;
+    background-image: linear-gradient(#fff, #fff), var(--fall-gradient);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.fall-theme .gallery-item:hover {
+    border-color: var(--fall-orange);
+    box-shadow: 0 25px 60px rgba(255, 140, 0, 0.2);
+}
+
+.fall-theme .section-header h2 {
+    color: var(--fall-orange);
+}
+
+.fall-theme .about-content {
+    border-left: 5px solid var(--fall-orange);
+    background: linear-gradient(#ffffff, #ffffff) padding-box,
+                linear-gradient(135deg, rgba(255, 140, 0, 0.35), rgba(139, 69, 19, 0.35)) border-box;
+}
+
+.fall-theme .about-text h2::after {
+    background: var(--fall-accent);
+}
+
+.fall-theme .memory-tribute {
+    border-left: 5px solid var(--fall-yellow);
+    background: linear-gradient(135deg, rgba(255, 140, 0, 0.1), rgba(218, 165, 32, 0.05));
+}
+
+.fall-theme .memory-tribute i {
+    color: var(--fall-yellow);
+}
+
+.fall-theme .hours-card,
+.fall-theme .happy-hour-card,
+.fall-theme .live-music-card {
+    border-top: 4px solid var(--fall-orange);
+    background: linear-gradient(#ffffff, #ffffff) padding-box,
+                linear-gradient(135deg, rgba(255, 140, 0, 0.25), rgba(139, 69, 19, 0.25)) border-box;
+}
+
+.fall-theme .hours-card:hover::before,
+.fall-theme .happy-hour-card:hover::before,
+.fall-theme .live-music-card:hover::before {
+    background: linear-gradient(90deg, var(--fall-orange), var(--fall-brown), var(--fall-yellow));
+}
+
+.fall-theme .hours-card h3,
+.fall-theme .happy-hour-card h3,
+.fall-theme .live-music-card h3 {
+    color: var(--fall-orange);
+}
+
+.fall-theme .hours-card i,
+.fall-theme .happy-hour-card i,
+.fall-theme .live-music-card i {
+    color: var(--fall-yellow);
+}
+
+.fall-theme .contact-item {
+    border-top: 4px solid var(--fall-orange);
+    background: linear-gradient(#ffffff, #ffffff) padding-box,
+                linear-gradient(135deg, rgba(255, 140, 0, 0.25), rgba(139, 69, 19, 0.25)) border-box;
+}
+
+.fall-theme .contact-item i {
+    color: var(--fall-orange);
+}
+
+.fall-theme .contact-item h3 {
+    color: var(--fall-orange);
+}
+
+.fall-theme .social-link {
+    background: var(--fall-accent);
+    box-shadow: 0 8px 25px rgba(218, 165, 32, 0.3);
+}
+
+.fall-theme .social-link:hover {
+    background: linear-gradient(135deg, var(--fall-orange) 0%, var(--fall-yellow) 100%);
+    box-shadow: 0 15px 40px rgba(218, 165, 32, 0.4);
+}
+
+.fall-theme .footer {
+    background: var(--fall-gradient);
+}
+
+.fall-theme .footer-logo h3 {
+    color: var(--fall-yellow);
+}
+
+.fall-theme .footer-links a:hover {
+    color: var(--fall-yellow);
+}
+
+.fall-theme .footer-links a::after {
+    background: var(--fall-yellow);
+}
+
+.fall-theme .footer-bottom p:last-child {
+    color: var(--fall-yellow);
+}
+
+/* Minimal Falling Leaves Animation */
+.falling-leaves {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.leaf {
+    position: absolute;
+    font-size: 1.2rem;
+    opacity: 0.6;
+    animation: fall linear infinite;
+    color: #ff8c00;
+}
+
+.leaf:nth-child(1) {
+    left: 10%;
+    animation-duration: 8s;
+    animation-delay: 0s;
+}
+
+.leaf:nth-child(2) {
+    left: 20%;
+    animation-duration: 10s;
+    animation-delay: 2s;
+}
+
+.leaf:nth-child(3) {
+    left: 30%;
+    animation-duration: 12s;
+    animation-delay: 4s;
+}
+
+.leaf:nth-child(4) {
+    left: 40%;
+    animation-duration: 9s;
+    animation-delay: 1s;
+}
+
+.leaf:nth-child(5) {
+    left: 50%;
+    animation-duration: 11s;
+    animation-delay: 3s;
+}
+
+.leaf:nth-child(6) {
+    left: 60%;
+    animation-duration: 13s;
+    animation-delay: 5s;
+}
+
+.leaf:nth-child(7) {
+    left: 70%;
+    animation-duration: 7s;
+    animation-delay: 1.5s;
+}
+
+.leaf:nth-child(8) {
+    left: 80%;
+    animation-duration: 14s;
+    animation-delay: 6s;
+}
+
+.leaf:nth-child(9) {
+    left: 90%;
+    animation-duration: 9s;
+    animation-delay: 2.5s;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Happy Fall Message */
+.happy-fall-banner {
+    background: linear-gradient(135deg, #ff8c00, #cd5c5c, #8b4513);
+    color: white;
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    position: relative;
+    z-index: 1001;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.fall-message {
+    margin-top: 15px;
+    padding: 10px;
+    background: linear-gradient(135deg, rgba(255, 140, 0, 0.1), rgba(205, 92, 92, 0.1));
+    border-radius: 8px;
+    border-left: 3px solid #ff8c00;
+}
+
+.fall-message p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #8b4513;
+    font-weight: 500;
+}
+
+.fall-message i {
+    color: #ff8c00;
+    margin-right: 6px;
 }
 
 /* Responsive Menu */
@@ -3247,7 +3547,10 @@ footer .tribute {
     width: 100%;
     height: 320px;
     object-fit: cover;
+    object-position: center;
     transition: all 0.4s ease;
+    background: #f8f8f8;
+    display: block;
 }
 
 .gallery-item:hover .gallery-img {
