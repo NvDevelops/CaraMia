@@ -747,14 +747,14 @@ section::before {
 
 .hours-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* include info column */
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(20px, 3vw, 40px);
     margin-top: 40px;
 }
 
 .hours-card, .happy-hour-card {
     background: var(--white);
-    padding: 40px 30px;
+    padding: clamp(24px, 3vw, 40px) clamp(20px, 3vw, 30px);
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
     text-align: center;
@@ -792,7 +792,7 @@ section::before {
     color: var(--primary-color);
     margin-bottom: 1.5rem;
     font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
 }
 
 .happy-hour-card .highlight {
@@ -1358,8 +1358,8 @@ section::before {
 /* 3x2 grid for information cards */
 #reservation .info-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(14px, 2vw, 20px);
     align-items: stretch;
 }
 
@@ -3374,7 +3374,7 @@ footer .tribute {
 
 .title-line {
     display: block;
-    font-size: 4.5rem;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
     font-weight: 900;
     color: #ffffff;
     text-shadow: 
@@ -3603,7 +3603,7 @@ footer .tribute {
 /* Gallery Grid */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-bottom: 80px;
 }
@@ -3721,7 +3721,7 @@ footer .tribute {
 
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
 }
 
